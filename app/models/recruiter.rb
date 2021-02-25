@@ -6,10 +6,18 @@ class Recruiter < ApplicationRecord
 
   belongs_to :company, optional: true
   
-  before_save :company_name
+  before_save :generate_company
 
-  def company_name
+  def generate_company
     self.company_name = self.email[/(?<=\@)(.*?)(?=\.)/].capitalize
+
+    if Company.find_by(name: self.company_name) == nil
+      company = Company.create!(name: self.company_name)
+      self.company_id = company.id
+    elsif Company.find_by(name: self.company_name).valid?
+      self.company_id = Company.find_by(name: self.company_name).id
+    else
+      Company.create!(name: self.company_name)
+    end
   end
-  
 end

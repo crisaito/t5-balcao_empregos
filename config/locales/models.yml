@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    models:
+      recruiter: 
+        one: Recrutador
+        other: Recrutadores
+      company:
+        one: Empresa
+        other: Empresas
+    attributes:
+      company:
+        name: "Nome"
+        logo: "Logo"
+        description: "Descrição"
+        address: "Endereço"
+        cnpj: "CNPJ"
+        website: "Website"
+        linkedin: "Linkedin"
