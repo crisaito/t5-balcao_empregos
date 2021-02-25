@@ -5,4 +5,11 @@ class Recruiter < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :company, optional: true
+  
+  before_save :company_name
+
+  def company_name
+    self.company_name = self.email[/(?<=\@)(.*?)(?=\.)/].capitalize
+  end
+  
 end
