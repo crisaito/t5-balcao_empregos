@@ -1,0 +1,13 @@
+
+<% @companies.each do |company| %>
+  <h3> <%= link_to company.name, company_path(company.id) %> </h3>
+
+  <% if company.logo.attached? %>
+    <%= image_tag company.logo %> 
+  <% end %>
+  <p> <%= company.description %> </p>
+  <p> <%= company.address %> </p>
+  <p> <%= company.cnpj %> </p>
+  <p> <%= company.website %> </p>
+  <p> <%= company.linkedin %> </p>
+<% end %>
