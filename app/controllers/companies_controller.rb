@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_recruiter!, except: [:index, :show]
+
   def index
     @companies = Company.all
   end

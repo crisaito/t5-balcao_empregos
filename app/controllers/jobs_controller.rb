@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :authenticate_recruiter!, except: [:show]
+
   def show
     @job = Job.find(params[:id])
     @company = Company.find(params[:company_id])
