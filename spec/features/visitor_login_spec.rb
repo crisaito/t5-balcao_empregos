@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor login' do
+feature 'Visitor' do
   scenario 'sign up successfully as recruiter for the first time' do
 
     visit root_path
@@ -17,7 +17,7 @@ feature 'Visitor login' do
     expect(page).to have_content 'Cadastrar Empresa'
   end
 
-  scenario 'successfully as recruiter' do
+  scenario 'log in successfully as recruiter' do
     Recruiter.create!(email: 'saito@cocacola.com', password: '123456')
 
     visit root_path
@@ -34,5 +34,7 @@ feature 'Visitor login' do
     expect(page).to have_content 'Login efetuado com sucesso.'
     expect(page).to have_content 'Sair'
     expect(page).not_to have_link 'Recrutador'
+    expect(page).to have_content 'Descrição'
+    expect(page).to have_content 'Endereço'
   end
 end

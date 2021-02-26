@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     if array.include?(resource.company_name)
       company_path(resource) 
     else
-      new_company_path
+      edit_company_path(resource)
     end
   end
 end

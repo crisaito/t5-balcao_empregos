@@ -1,0 +1,10 @@
+<h1> <%= @job.title %></h1>
+
+<p> <%= @job.description %> </p>
+<p> <%= number_to_currency(@job.compensation, delimiter: ".") %> </p>
+<p> <%= @job.experience_level %> </p>
+<p> <%= @job.requirements %> </p>
+<p> <%= I18n.localize(@job.expiration_date) %> </p>
+<p> <%= @job.total_jobs %> </p>
+
+<%= link_to 'Voltar para Vagas', company_path(@company.id) %>

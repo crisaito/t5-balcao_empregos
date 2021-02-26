@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_230256) do
+ActiveRecord::Schema.define(version: 2021_02_26_162447) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,20 @@ ActiveRecord::Schema.define(version: 2021_02_25_230256) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "compensation"
+    t.string "experience_level"
+    t.string "requirements"
+    t.date "expiration_date"
+    t.integer "total_jobs"
+    t.integer "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+  end
+
   create_table "recruiters", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +82,5 @@ ActiveRecord::Schema.define(version: 2021_02_25_230256) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "jobs", "companies"
 end

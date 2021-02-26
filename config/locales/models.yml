@@ -16,3 +16,11 @@ pt-BR:
         cnpj: "CNPJ"
         website: "Website"
         linkedin: "Linkedin"
+      job:
+        title: "Título da vaga"
+        description: "Descrição"
+        compensation: "Salário"
+        experience_level: "Nível"
+        requirements: "Requisitos"
+        expiration_date: "Data de expiração da vaga"
+        total_jobs: "Total de vagas"

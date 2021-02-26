@@ -1,5 +1,6 @@
-<h1>Cadastrar Empresa</h1>
 
+<h1>Cadastrar Empresa</h1>
+<h2>Editar</h2>
 <% if @company.errors.any? %>
   <p>Preencha todos os campos</p>
   <% @company.errors.full_messages.each do |message| %>
@@ -7,9 +8,9 @@
   <% end %>
 <% end %>
 
-<h3> <%= @recruiter.company_name %></h3>
+<h3> <%= @company.name %></h3>
 
-<%= form_with(model: Company.new) do |f| %>
+<%= form_for @company do |f| %>
 
   <%= f.label :logo %>
   <%= f.file_field :logo %>

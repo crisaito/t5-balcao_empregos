@@ -15,5 +15,16 @@
   <p> linkedin </p>
   <p> <%= @company.linkedin %> </p>
 
+  <p> <%= link_to 'Cadastrar vaga', new_company_job_path(@company) %> </p>
+  <p>Vagas Disponíveis</p>
 
+<div>
+  <% @company.jobs.each do |job| %>
 
+    <h3> <%= link_to job.title, company_job_path(@company.id, job.id) %> </h3>
+    <p> <%= job.experience_level %> </p>
+    <p> <%= number_to_currency(job.compensation, delimiter: ".") %> </p>
+  <% end %>
+</div>
+
+<%= link_to 'Voltar', companies_path %> 

@@ -1,0 +1,34 @@
+<h1>Cadastrar Vaga</h1>
+
+<% if @job.errors.any? %>
+  <p>Preencha todos os campos</p>
+  <% @job.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+  <% end %>
+<% end %>
+
+<%=  form_with model: [@company, @job] do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, size: "40x5" %>
+
+  <%= f.label :compensation %>
+  <%= f.text_field :compensation %>
+
+  <%= f.label :experience_level %>
+  <%= f.text_field :experience_level %>
+
+  <%= f.label :requirements %>
+  <%= f.text_field :requirements %>
+
+  <%= f.label :expiration_date %>
+  <%= f.date_field :expiration_date %>
+
+  <%= f.label :total_jobs %>
+  <%= f.text_field :total_jobs %>
+
+  <%= f.submit 'Cadastrar Vaga' %>
+<% end %>

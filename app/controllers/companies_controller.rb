@@ -12,18 +12,36 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(params.require(:company).permit(
+    @company = Company.new(company_params)
+    if @company.save
+      redirect_to @company
+    else  
+      render 'new'
+    end
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+  end
+  
+  def update
+    @company = Company.find(params[:id])
+
+    if @company.update(company_params)
+      redirect_to @company
+    else
+      render :edit
+    end
+  end
+
+  def company_params
+    params.require(:company).permit(
       :name,
       :description,
       :address,
       :cnpj,
       :website,
       :linkedin,
-      :logo))
-    if @company.save
-      redirect_to @company
-    else  
-      render 'new'
-    end
+      :logo)
   end
 end
