@@ -1,29 +1,10 @@
 require 'rails_helper'
 
 feature 'Visitor login' do
-  scenario 'successfully as recruiter' do
-    recruiter = Recruiter.create!(email: 'saito@cocacola.com', password: '123456')
-
-    visit root_path
-    click_on 'Entrar'
-
-    within('form') do
-      fill_in 'E-mail', with: recruiter.email 
-      fill_in 'Senha', with: '123456'
-      click_on 'Log in'
-    end  
-
-    expect(page).to have_content recruiter.email
-    expect(page).to have_content 'Empresa: Cocacola'
-    expect(page).to have_content 'Login efetuado com sucesso.'
-    expect(page).to have_content 'Sair'
-    expect(page).not_to have_link 'Entrar'
-  end
-
   scenario 'sign up successfully as recruiter for the first time' do
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Recrutador'
     click_on 'Sign up'
 
     within('form') do
@@ -34,5 +15,24 @@ feature 'Visitor login' do
     end  
 
     expect(page).to have_content 'Cadastrar Empresa'
+  end
+
+  scenario 'successfully as recruiter' do
+    Recruiter.create!(email: 'saito@cocacola.com', password: '123456')
+
+    visit root_path
+    click_on 'Recrutador'
+
+    within('form') do
+      fill_in 'E-mail', with: 'saito@cocacola.com' 
+      fill_in 'Senha', with: '123456'
+      click_on 'Log in'
+    end  
+
+    expect(page).to have_content 'saito@cocacola.com'
+    expect(page).to have_content 'Empresa: Cocacola'
+    expect(page).to have_content 'Login efetuado com sucesso.'
+    expect(page).to have_content 'Sair'
+    expect(page).not_to have_link 'Recrutador'
   end
 end
