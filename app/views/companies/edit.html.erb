@@ -1,6 +1,5 @@
 
 <h1>Cadastrar Empresa</h1>
-<h2>Editar</h2>
 <% if @company.errors.any? %>
   <p>Preencha todos os campos</p>
   <% @company.errors.full_messages.each do |message| %>
@@ -11,6 +10,9 @@
 <h3> <%= @company.name %></h3>
 
 <%= form_for @company do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name, value: @company.name, disabled: true %>
 
   <%= f.label :logo %>
   <%= f.file_field :logo %>
