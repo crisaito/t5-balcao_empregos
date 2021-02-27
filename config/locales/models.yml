@@ -7,6 +7,9 @@ pt-BR:
       company:
         one: Empresa
         other: Empresas
+      candidate:
+        one: Candidato
+        other: Candidatos
     attributes:
       company:
         name: "Nome"
@@ -24,3 +27,9 @@ pt-BR:
         requirements: "Requisitos"
         expiration_date: "Data de expiração da vaga"
         total_jobs: "Total de vagas"
+      candidate:
+        full_name: "Nome completo"
+        tel: "Tel"
+        city: "Cidade"
+        state: "Estado"
+        bio: "Bio"

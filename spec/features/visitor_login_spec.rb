@@ -37,4 +37,26 @@ feature 'Visitor' do
     expect(page).to have_content 'Descrição'
     expect(page).to have_content 'Endereço'
   end
+
+  scenario 'sign up successfully as candidate' do
+
+    visit root_path
+    click_on 'Candidato'
+    click_on 'Sign up'
+    
+    within('form') do
+      fill_in 'E-mail', with: 'cris@gmail.com' 
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirme sua senha', with: '123456'
+      fill_in 'Nome completo', with: 'Cris Saito' 
+      fill_in 'Tel', with: '99 999 999' 
+      fill_in 'Cidade', with: 'São Paulo' 
+      fill_in 'Estado', with: 'SP' 
+      fill_in 'Bio', with: 'Graduação em Design' 
+      click_on 'Sign up'
+    end
+  
+    expect(page).to have_content 'Bem vindo! Você realizou seu registro com sucesso.'
+    expect(page).to have_content 'Painel do Candidato'
+  end
 end
