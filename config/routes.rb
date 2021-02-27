@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :jobs, only: [:show, :new, :create]
   end
 
-  resources :candidates, only: [:show]
+  resources :candidates, only: [:show, :edit, :update]
 end
