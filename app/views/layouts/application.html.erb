@@ -22,7 +22,6 @@
 
       <% if candidate_signed_in? %>
         <%= current_candidate.email %>
-        <%= link_to 'Editar perfil', edit_candidate_path(Candidate.find(params[:id])) %>
         <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Candidato', new_candidate_session_path %>
