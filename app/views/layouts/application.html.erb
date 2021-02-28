@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <nav>
+    <nav style="border:1px solid gray">
       <% if recruiter_signed_in? %>
         <%= current_recruiter.email %>
         <p> Empresa:  <%= current_recruiter.company_name %></p>

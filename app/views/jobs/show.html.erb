@@ -15,9 +15,17 @@
 
 <% if recruiter_signed_in? %>
   <p> Candidaturas: </p>
-
   <% @job.job_applications.each do |job_application| %>
-  <p> <%=  job_application.candidate.full_name  %> </p>
-  <% end %>
 
+    <div style="border: 1px solid lime; width: 50%" >
+      <p> <%=  job_application.candidate.full_name  %> </p>
+
+      <p>Status: <%= job_application.status %> </p>
+
+      <p> <%= link_to 'Rejeitar', reject_job_application_path(job_application),method: :patch %> </p>
+      
+      <p> <%= link_to 'Enviar proposta', root_path %> </p>
+    </div>
+
+  <% end %>
 <% end %>
