@@ -1,8 +1,8 @@
 class CandidatesController < ApplicationController
-  before_action :authenticate_candidate!, except: [:show]
   
   def show
     @candidate = Candidate.find(params[:id])
+    @job_applications = JobApplication.all
   end
 
   def edit

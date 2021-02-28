@@ -4,3 +4,19 @@
 
 <p> <%= link_to 'Editar perfil', edit_candidate_path(@candidate) %> </p> 
 <p> <%= link_to 'Empresas', companies_path %> </p>
+
+<p> Candidaturas: </p>
+  <% @candidate.job_applications.each do |job_application| %>
+
+    <div style="border: 1px solid lime; width: 50%" >
+      <p> <%=  job_application.job.company.name  %> </p>
+      <p> <%=  job_application.job.title  %> </p>
+
+      <p>Status: <%= job_application.status %> </p>
+      <p>Motivo: <%= job_application.msg_rejected %> </p>
+      <p>Motivo: <%= job_application.msg_approved %> </p>
+      <p>Proposta Salarial: <%= job_application.proposed_compensation %>
+      <p>Data de Início: <%= job_application.date_start %> </p>
+    </div>
+
+  <% end %>

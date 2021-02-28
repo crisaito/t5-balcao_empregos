@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
 
   resources :candidates, only: [:show, :edit, :update]
-  resources :job_applications, only: [] do
+  resources :job_applications, only: [:show, :edit, :update] do
     patch 'reject', on: :member
+    patch 'approved', on: :member
+
   end
 end

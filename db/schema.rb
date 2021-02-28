@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_163851) do
+ActiveRecord::Schema.define(version: 2021_02_28_181104) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,6 +76,10 @@ ActiveRecord::Schema.define(version: 2021_02_28_163851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0, null: false
+    t.text "msg_approved"
+    t.text "msg_rejected"
+    t.decimal "proposed_compensation"
+    t.date "date_start"
     t.index ["candidate_id"], name: "index_job_applications_on_candidate_id"
     t.index ["job_id"], name: "index_job_applications_on_job_id"
   end

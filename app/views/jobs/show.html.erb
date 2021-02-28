@@ -21,8 +21,7 @@
       <p> <%=  job_application.candidate.full_name  %> </p>
 
       <p>Status: <%= job_application.status %> </p>
-
-      <p> <%= link_to 'Rejeitar', reject_job_application_path(job_application),method: :patch %> </p>
+      <%= link_to 'Detalhes', edit_job_application_path(job_application)%>
       
       <p> <%= link_to 'Enviar proposta', root_path %> </p>
     </div>

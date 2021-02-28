@@ -1,0 +1,36 @@
+<h1>Detalhes da candidatura</h1>
+
+<% if recruiter_signed_in? %>
+  <p> <%= @job_application.job.title %> </p>
+  <p> <%= @job_application.job.expiration_date %> </p>
+  <p> <%= @job_application.job.total_jobs %> </p>
+  <br>
+  <p> <%= @job_application.candidate.full_name %> </p>
+  <p> <%= @job_application.candidate.bio %> </p>
+  <p> <%= @job_application.candidate.tel %> </p>
+  <p> <%= @job_application.candidate.email %> </p>
+  <br>
+  
+    <%= link_to 'Rejeitar', reject_job_application_path(@job_application),method: :patch %> </p>
+  <%= form_for @job_application do |f| %>
+    <%= f.label :msg_rejected %>
+    <%= f.text_area :msg_rejected %>
+  
+    <%= f.submit 'Salvar' %>
+  <% end %>
+  <br><br>
+  <%= link_to 'Aceitar', approved_job_application_path(@job_application),method: :patch %> </p>
+  <%= form_for @job_application do |f| %>
+    <%= f.label :msg_approved %>
+    <%= f.text_area :msg_approved %>
+
+    <%= f.label :proposed_compensation %>
+    <%= f.text_field :proposed_compensation %>
+
+    <%= f.label :date_start %>
+    <%= f.date_field :date_start %>
+  
+    <%= f.submit 'Salvar' %>
+
+  <% end %>
+<% end %>
