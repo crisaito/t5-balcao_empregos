@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
-  before_action :authenticate_recruiter!, except: [:show]
+  #before_action :authenticate_recruiter!, except: [:show]
+  #before_action :authenticate_candidate!, except: [:apply]
 
   def show
     @job = Job.find(params[:id])
@@ -27,5 +28,14 @@ class JobsController < ApplicationController
     else  
       render 'new'
     end
+  end
+
+  def apply
+    @job = Job.find(params[:id])
+    @candidate = Candidate.find(params[:id])
+    @job_application = JobApplication.new
+    JobApplication.create!(candidate: @candidate, job: @job)
+    flash[:apply] = 'Você candidatou-se para a vaga com sucesso!'
+    redirect_to @candidate
   end
 end

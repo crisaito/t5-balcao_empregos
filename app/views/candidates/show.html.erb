@@ -1,4 +1,6 @@
 <h1>Painel do Candidato</h1>
 
-<p> <%= link_to 'Editar perfil', edit_candidate_path(Candidate.find(params[:id])) %> </p> 
+<%= flash[:apply] %> 
+
+<p> <%= link_to 'Editar perfil', edit_candidate_path(@candidate) %> </p> 
 <p> <%= link_to 'Empresas', companies_path %> </p>

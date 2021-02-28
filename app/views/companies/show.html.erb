@@ -15,8 +15,11 @@
   <p> linkedin </p>
   <p> <%= @company.linkedin %> </p>
 
+<% if recruiter_signed_in? %>
   <p> <%= link_to 'Cadastrar vaga', new_company_job_path(@company) %> </p>
-  <p>Vagas Disponíveis</p>
+  <% end %>
+  
+<p>Vagas Disponíveis</p>
 
 <div>
   <% @company.jobs.each do |job| %>

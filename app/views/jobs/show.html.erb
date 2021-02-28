@@ -1,3 +1,5 @@
+<p> <%= link_to 'Voltar para Vagas', company_path(@company) %> </p>
+
 <h1> <%= @job.title %></h1>
 
 <p> <%= @job.description %> </p>
@@ -6,6 +8,16 @@
 <p> <%= @job.requirements %> </p>
 <p> <%= I18n.localize(@job.expiration_date) %> </p>
 <p> <%= @job.total_jobs %> </p>
-<p> <%= link_to 'Aplicar para vaga', company_job_job_application_path(@company, @job) %> </p>
-<br>
-<p> <%= link_to 'Voltar para Vagas', company_path(@company.id) %> </p>
+
+<% if candidate_signed_in? %>
+  <p> <%= link_to 'Enviar', apply_company_job_path(@company, @job), method: :post %> </p>
+<% end %>
+
+<% if recruiter_signed_in? %>
+  <p> Candidaturas: </p>
+
+  <% @job.job_applications.each do |job_application| %>
+  <p> <%=  job_application.candidate.full_name  %> </p>
+  <% end %>
+
+<% end %>
