@@ -31,11 +31,9 @@ class JobsController < ApplicationController
   end
 
   def apply
-    @job = Job.find(params[:id])
-    @candidate = Candidate.find(params[:id])
-    @job_application = JobApplication.new
-    JobApplication.create!(candidate: @candidate, job: @job)
+    job = Job.find(params[:id])
+    JobApplication.create!(candidate: current_candidate, job: job)
     flash[:apply] = 'Você candidatou-se para a vaga com sucesso!'
-    redirect_to @candidate
+    redirect_to current_candidate
   end
 end
