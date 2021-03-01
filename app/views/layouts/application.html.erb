@@ -11,24 +11,7 @@
   </head>
 
   <body>
-    <nav style="border:1px solid gray">
-      <% if recruiter_signed_in? %> </p>
-        <p> <%= current_recruiter.email %> </p>
-        <p> Empresa:  <%= current_recruiter.company_name %></p>
-        <p> <%= link_to 'Sair', destroy_recruiter_session_path, method: :delete %> </p>
-      <% else %>
-        <p> <%= link_to 'Recrutador', new_recruiter_session_path %> </p>
-      <% end %>
-
-      <% if candidate_signed_in? %>
-        <p> <%= current_candidate.email %> </p>
-        <p> <%= link_to 'Painel', candidate_path(current_candidate) %> </p>
-        <p> <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %> </p>
-      <% else %>
-        <p> <%= link_to 'Candidato', new_candidate_session_path %> </p>
-      <% end %>
-    </nav>
-    
+    <%= render partial: "shared/navbar" %>    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
