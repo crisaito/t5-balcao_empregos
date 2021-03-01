@@ -51,4 +51,20 @@ feature 'Visitor view jobs' do
     expect(page).to have_content('21/02/2021')
     expect(page).to have_content('5')
   end
+
+  scenario 'if total jobs differs from 0' do
+    pepsico = Company.new(name:'Pepsi')
+    candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456')
+    job = Job.create!(title: 'Analista', total_jobs:'1', company: pepsico)
+    application = JobApplication.create(candidate: candidate, job: job)
+
+    application.decrease_total_jobs
+    
+    visit root_path
+    click_on 'Empresas'
+    click_on 'Pepsi'
+
+    expect(application.job.total_jobs).to eq 0
+    expect(page).not_to have_content('Analista')
+  end
 end
