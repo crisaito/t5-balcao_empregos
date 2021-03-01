@@ -23,7 +23,7 @@
 
 <div>
   <% @company.jobs.each do |job| %>
-    
+
     <% if job.total_jobs > 0 && Date.today < job.expiration_date %>
       <h3> <%= link_to job.title, company_job_path(@company, job) %> </h3>
       <p> <%= I18n.localize(job.expiration_date) %> </p>
