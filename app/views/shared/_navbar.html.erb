@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand ps-4" href="/">Balcão de<br>Empregos</a>
+  <div class=" container container-fluid">
+    <a class="navbar-brand" href="/">Balcão de<br>Empregos</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item pe-4">    
-          <% if recruiter_signed_in? %> </p>
+        <li class="nav-item">    
+          <% if recruiter_signed_in? %>
             <p> <%= current_recruiter.email %> </p>
             <p> Empresa:  <%= current_recruiter.company_name %></p>
             <p> <%= link_to 'Sair', destroy_recruiter_session_path, method: :delete %> </p>
