@@ -1,24 +1,19 @@
-# README
+# Projeto Etapa 1 - Treinadev 5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Balcão de Empregos
 
-Things you may want to cover:
+> Status: Em desenvolvimento :warning:
 
-* Ruby version
+### Proposta
+Projeto consiste na criação de uma plataforma Web para que pessoas dos departamentos de RH de empresas criem vagas e sejam capazes de gerenciar todo processo de forma colaborativa. Além disso, a plataforma funciona como um site de busca de oportunidades para os visitantes. Um visitante pode conhecer empresas, ver suas vagas disponíveis e aplicar para estas vagas.
 
-* System dependencies
+### Kanban
+* [Trello](https://trello.com/b/dohfWWWv/treinadev-projeto-final-balc%C3%A3o-de-empregos)
 
-* Configuration
+### Wireframes
+* [Figma](https://www.figma.com/file/HEoeEnfClHhOAMBGNrh2No/treinadev)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Gems utilizadas
+* [Rspec](https://github.com/rspec/rspec-rails)
+* [Capybara](https://github.com/teamcapybara/capybara)
+* [Devise](https://github.com/heartcombo/devise)
