@@ -12,7 +12,7 @@ feature 'Candidate apply for job' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2021',
+                expiration_date: '21/02/2022',
                 total_jobs:'5', company: pepsico) 
     
     visit root_path

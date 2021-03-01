@@ -6,7 +6,10 @@
 <p> <%= number_to_currency(@job.compensation, delimiter: ".") %> </p>
 <p> <%= @job.experience_level %> </p>
 <p> <%= @job.requirements %> </p>
-<p> <%= I18n.localize(@job.expiration_date) %> </p>
+<p> <%= I18n.localize(@job.expiration_date) %> 
+    <%= (@job.expiration_date - Date.today).to_i %>
+      dias para expirar a vaga
+</p>
 <p> <%= @job.total_jobs %> </p>
 
 <% if candidate_signed_in? %>

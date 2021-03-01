@@ -11,7 +11,7 @@ feature 'Visitor view jobs' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2021',
+                expiration_date: '21/02/2022',
                 total_jobs:'5', company: pepsico)
     
     visit root_path
@@ -33,7 +33,7 @@ feature 'Visitor view jobs' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2021',
+                expiration_date: '21/02/2022',
                 total_jobs:'5', company: pepsico)
 
     visit root_path
@@ -48,7 +48,7 @@ feature 'Visitor view jobs' do
     expect(page).to have_content('R$ 10.000')
     expect(page).to have_content('Senior')
     expect(page).to have_content('Foco em performance, Ruby on Rails')
-    expect(page).to have_content('21/02/2021')
+    expect(page).to have_content('21/02/2022')
     expect(page).to have_content('5')
   end
 
@@ -66,5 +66,19 @@ feature 'Visitor view jobs' do
 
     expect(application.job.total_jobs).to eq 0
     expect(page).not_to have_content('Analista')
+  end
+
+  scenario 'if not expired date' do
+    pepsico = Company.new(name:'Pepsi')
+    candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456')
+    job = Job.create!(title: 'Analista', expiration_date: '21/02/2021', company: pepsico)
+    job = Job.create!(title: 'Diretoria', expiration_date: '21/03/2021', company: pepsico)
+
+    visit root_path
+    click_on 'Empresas'
+    click_on 'Pepsi'
+
+    expect(page).not_to have_content('Analista')
+    expect(page).to have_content('Diretoria')
   end
 end
