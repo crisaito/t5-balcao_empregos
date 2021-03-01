@@ -14,20 +14,30 @@ class JobsController < ApplicationController
 
   def create    
     @company = Company.find(params[:company_id])
-    @job = @company.jobs.new(params.require(:job).permit(
-      :title,
-      :description,
-      :compensation,
-      :experience_level,
-      :requirements,
-      :expiration_date,
-      :total_jobs,
-      :company_id))
+    @job = @company.jobs.new(job_params)
     if @job.save
       redirect_to company_job_path(@company, @job)
     else  
       render 'new'
     end
+  end
+
+  def edit    
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:company_id])
+
+    @job = Job.find(params[:id])
+    if @job.update(job_params)
+      redirect_to company_job_path(@company, @job)
+    else
+      render :edit
+    end
+  end
+
   end
 
   def apply
@@ -36,4 +46,15 @@ class JobsController < ApplicationController
     flash[:apply] = 'Você candidatou-se para a vaga com sucesso!'
     redirect_to current_candidate
   end
+
+  def job_params
+    params.require(:job).permit(
+      :title,
+      :description,
+      :compensation,
+      :experience_level,
+      :requirements,
+      :expiration_date,
+      :total_jobs,
+      :company_id)
 end

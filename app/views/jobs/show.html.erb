@@ -17,6 +17,8 @@
 <% end %>
 
 <% if recruiter_signed_in? %>
+  <p> <%= link_to 'Editar vaga', edit_company_job_path(@company, @job) %> </p>
+  <br>
   <p> Candidaturas: </p>
   <% @job.job_applications.each do |job_application| %>
 
