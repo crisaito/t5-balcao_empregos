@@ -5,4 +5,10 @@
   <p>Faça seu cadastro para se candidatar às vagas de emprego</p>
   
   <p> <%= link_to 'Empresas', companies_path %> </p>
+
+  <%= form_with url: search_path, method: :get do %>
+    <%= label_tag :q, 'Buscar' %>
+    <%= text_field_tag :q %>
+    <%= submit_tag 'Pesquisar' %>
+  <% end %>
 </div>

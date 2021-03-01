@@ -1,0 +1,12 @@
+<h1>Resultados da busca</h1>
+<ul>
+  <% @companies.each do |company| %>
+    <li> <%= company.name %> </li>
+  <% end %>
+</ul>
+<ul>
+  <% @jobs.each do |job| %>
+    <li> <%= job.title %> </li>
+    <li> <%= job.company.name %> </li>
+  <% end %>
+</ul>
