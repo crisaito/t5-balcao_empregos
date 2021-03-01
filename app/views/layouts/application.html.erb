@@ -12,19 +12,20 @@
 
   <body>
     <nav style="border:1px solid gray">
-      <% if recruiter_signed_in? %>
-        <%= current_recruiter.email %>
+      <% if recruiter_signed_in? %> </p>
+        <p> <%= current_recruiter.email %> </p>
         <p> Empresa:  <%= current_recruiter.company_name %></p>
-        <%= link_to 'Sair', destroy_recruiter_session_path, method: :delete %>
+        <p> <%= link_to 'Sair', destroy_recruiter_session_path, method: :delete %> </p>
       <% else %>
-        <%= link_to 'Recrutador', new_recruiter_session_path %>
+        <p> <%= link_to 'Recrutador', new_recruiter_session_path %> </p>
       <% end %>
 
       <% if candidate_signed_in? %>
-        <%= current_candidate.email %>
-        <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %>
+        <p> <%= current_candidate.email %> </p>
+        <p> <%= link_to 'Painel', candidate_path(current_candidate) %> </p>
+        <p> <%= link_to 'Sair', destroy_candidate_session_path, method: :delete %> </p>
       <% else %>
-        <%= link_to 'Candidato', new_candidate_session_path %>
+        <p> <%= link_to 'Candidato', new_candidate_session_path %> </p>
       <% end %>
     </nav>
     

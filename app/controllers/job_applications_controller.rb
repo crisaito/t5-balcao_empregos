@@ -16,6 +16,7 @@ class JobApplicationsController < ApplicationController
       :proposed_compensation,
       :msg_rejected,
       :msg_approved,
+      :msg_declined,
       :status,
       :candidate_id,
       :job_id))
@@ -25,13 +26,23 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  def reject
+  def recruiter_rejected
     @job_application = JobApplication.find(params[:id])
-    @job_application.rejected!
+    @job_application.recruiter_rejected!
   end
 
-  def approved
+  def recruiter_approved
     @job_application = JobApplication.find(params[:id])
-    @job_application.approved!
+    @job_application.recruiter_approved!
+  end
+
+  def candidate_accepted
+    @job_application = JobApplication.find(params[:id])
+    @job_application.candidate_accepted!
+  end
+
+  def candidate_declined
+    @job_application = JobApplication.find(params[:id])
+    @job_application.candidate_declined!
   end
 end

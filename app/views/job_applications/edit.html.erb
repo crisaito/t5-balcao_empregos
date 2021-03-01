@@ -11,7 +11,7 @@
   <p> <%= @job_application.candidate.email %> </p>
   <br>
   
-    <%= link_to 'Rejeitar', reject_job_application_path(@job_application),method: :patch %> </p>
+    <%= link_to 'Rejeitar', recruiter_rejected_job_application_path(@job_application),method: :patch %> </p>
   <%= form_for @job_application do |f| %>
     <%= f.label :msg_rejected %>
     <%= f.text_area :msg_rejected %>
@@ -19,7 +19,7 @@
     <%= f.submit 'Salvar' %>
   <% end %>
   <br><br>
-  <%= link_to 'Aceitar', approved_job_application_path(@job_application),method: :patch %> </p>
+  <%= link_to 'Aceitar', recruiter_approved_job_application_path(@job_application),method: :patch %> </p>
   <%= form_for @job_application do |f| %>
     <%= f.label :msg_approved %>
     <%= f.text_area :msg_approved %>
@@ -32,5 +32,31 @@
   
     <%= f.submit 'Salvar' %>
 
+  <% end %>
+<% end %>
+
+<% if candidate_signed_in? %>
+  <p> <%= @job_application.job.title %> </p>
+  <p> <%= @job_application.job.description %> </p>
+  <p> <%= @job_application.job.compensation %> </p>
+  <p> <%= @job_application.job.experience_level %> </p>
+  <p> <%= @job_application.job.requirements %> </p>
+  <p> <%= @job_application.job.expiration_date %> </p>
+
+  <% if @job_application.recruiter_rejected? %>
+    <p>Motivo: <%= @job_application.msg_rejected %> </p>
+  <% end %>
+
+  <% if @job_application.recruiter_approved? %>
+    <p> <%= @job_application.msg_approved %> </p>
+    <p>Proposta Salarial: <%= @job_application.proposed_compensation %>
+    <p>Data de Início: <%= @job_application.date_start %> </p>
+    <p> <%= link_to 'Aceitar proposta', candidate_accepted_job_application_path(@job_application), method: :patch %> </p>
+    <p> <%= link_to 'Declinar proposta', candidate_declined_job_application_path(@job_application), method: :patch %> </p>   
+  <% end %>
+  <%= form_for @job_application do |f| %>
+    <%= f.text_area :msg_declined %>
+
+    <%= f.submit 'Enviar motivo' %>      
   <% end %>
 <% end %>
