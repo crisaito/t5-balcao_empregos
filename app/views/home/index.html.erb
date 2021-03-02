@@ -1,14 +1,21 @@
-<h1>Balcão de Empregos</h1>
+<h1 class= "fs-2 fw-bold text-center my-5">Balcão de Empregos</h1>
 
-<div>
-  <p>Cadastre sua empresa e divulgue vagas</p>
-  <p>Faça seu cadastro para se candidatar às vagas de emprego</p>
-  
-  <p> <%= link_to 'Empresas', companies_path %> </p>
+<div class= "text-center row">
+  <div class= "col-3 mt-auto">
+    <p class= "">Cadastre sua empresa e divulgue vagas</p>
+    <%= link_to 'Recrutador', new_recruiter_session_path, :class => "btn btn-primary" %>
+  </div>
 
-  <%= form_with url: search_path, method: :get do %>
-    <%= label_tag :q, 'Buscar' %>
-    <%= text_field_tag :q %>
-    <%= submit_tag 'Pesquisar' %>
-  <% end %>
-</div>
+  <div class= "col-3 offset-1">
+    <p>Faça seu cadastro para se candidatar às vagas de emprego</p>
+    <%= link_to 'Candidato', new_candidate_session_path, :class => "btn btn-success" %>
+  </div>
+</div> 
+
+<%= form_with url: search_path, method: :get, :class => "my-5 text-right" do %>
+  <%= label_tag :q, 'Buscar' %>
+  <%= text_field_tag :q %>
+  <%= submit_tag 'Pesquisar' %>
+<% end %>
+
+<p> <%= link_to 'Empresas', companies_path %> </p>

@@ -72,7 +72,7 @@ feature 'Visitor view jobs' do
     pepsico = Company.new(name:'Pepsi')
     candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456')
     job = Job.create!(title: 'Analista', total_jobs:'1', expiration_date: '21/02/2021', company: pepsico)
-    job2 = Job.create!(title: 'Diretoria', total_jobs:'1', total_jobs:'1', expiration_date: '21/03/2022', company: pepsico)
+    job2 = Job.create!(title: 'Diretoria', total_jobs:'1', expiration_date: '21/03/2022', company: pepsico)
 
     visit root_path
     click_on 'Empresas'
