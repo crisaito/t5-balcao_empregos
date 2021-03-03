@@ -2,6 +2,14 @@
 
 <%= flash[:apply] %> 
 
+  <p> Email  <%= @candidate.email %> </p>
+  <p> Nome Completo  <%= @candidate.full_name %> </p>
+  <p> Tel  <%= @candidate.tel %> </p>
+  <p> Cidade  <%= @candidate.city  %> </p>
+  <p> Estado  <%= @candidate.state %> </p>
+  <p> Bio  <%= @candidate.bio %> </p>
+
+
 <p> <%= link_to 'Editar perfil', edit_candidate_path(@candidate) %> </p> 
 <p> <%= link_to 'Empresas', companies_path %> </p>
 

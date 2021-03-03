@@ -6,7 +6,7 @@ feature 'Recruiter registers job' do
     recruiter = Recruiter.create!(email: 'saito@pepsi.com', password: '123456')
 
     visit root_path
-    click_on 'Recrutador'
+    click_on("Recrutador", :match => :first)
 
     within('form') do
       fill_in 'E-mail', with: 'saito@pepsi.com' 

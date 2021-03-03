@@ -6,4 +6,6 @@ class Candidate < ApplicationRecord
 
   has_many :job_applications
   has_many :jobs, through: :job_applications
+
+  validates :email, :full_name, presence: true
 end

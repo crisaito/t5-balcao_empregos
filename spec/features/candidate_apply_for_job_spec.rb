@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Candidate apply for job' do
   scenario 'successfully' do
-    Candidate.create!(email: 'cris@gmail.com', password: '123456')
+    candidate = Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
     pepsico = Company.create!(name: 'Pepsi', description: 'Empresa de bebidas', 
                               address: 'São Paulo, SP', cnpj: '31565104000177', 
                               website: 'www.pepsico.com.br', 
@@ -14,16 +14,9 @@ feature 'Candidate apply for job' do
                 requirements: 'Foco em performance, Ruby on Rails', 
                 expiration_date: '21/02/2022',
                 total_jobs:'5', company: pepsico) 
-    
+    login_as candidate, scope: :candidate
+
     visit root_path
-    click_on 'Candidato'
-
-    within('form') do
-      fill_in 'E-mail', with: 'cris@gmail.com' 
-      fill_in 'Senha', with: '123456'
-      click_on 'Log in'
-    end
-
     click_on 'Empresas'
     click_on 'Pepsi'
     click_on 'Senior developer'

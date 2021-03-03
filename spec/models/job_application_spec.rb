@@ -4,7 +4,7 @@ describe JobApplication do
   context 'validation' do
     it 'decrease total jobs when candidate accept proposal' do
       pepsico = Company.new
-      candidate = Candidate.new(email: 'saito@gmail.com', password: '123456')
+      candidate = Candidate.new(email: 'saito@gmail.com', password: '123456', full_name: 'Cris Saito')
       job = Job.create!(total_jobs:'5', company: pepsico)
       application = JobApplication.create(candidate: candidate, job: job)
 

@@ -13,7 +13,7 @@ class Recruiter < ApplicationRecord
   def generate_company
     self.company_name = self.email[/(?<=\@)(.*?)(?=\.)/].capitalize
 
-    if Company.find_by(name: self.company_name) == nil
+    if Company.find_by(name: self.company_name).nil?
       company = Company.create!(name: self.company_name)
       self.admin!
       self.company_id = company.id

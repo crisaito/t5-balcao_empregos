@@ -25,7 +25,7 @@ pepsico = Company.create(name: 'Pepsi', description: 'O produto que deu origem �
                           address: 'São Paulo, SP', cnpj: '31565104000177', 
                           website: 'www.pepsico.com.br', 
                           linkedin: 'www.linkedin.com/company/pepsico')
-pepsico.logo.attach(io: File.open(Rails.root.join('public', 'images', 'pepsi.png')), filename: 'pepsi.png')
+pepsico.logo.attach(io: File.open(Rails.root.join('public', 'images', 'pepsi.jpg')), filename: 'pepsi.jpg')
 Recruiter.create(email: "bia@pepsi.com.br", password: "123456", company: pepsico)
 Job.create(title: 'Analista de desenvolvimento', description: 'Desenvolverá funcionalidades 
             e soluções para os mais diversos sistemas dentro da empresa.',

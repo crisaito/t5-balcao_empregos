@@ -7,10 +7,11 @@ feature 'Visitor visits home page' do
     expect(page).to have_content('Balcão de Empregos') 
     expect(page).to have_content('Cadastre sua empresa e divulgue vagas') 
     expect(page).to have_content('Faça seu cadastro para se candidatar às vagas de emprego') 
+    expect(page).to have_link('Empresas') 
 
   end
 
-  scenario 'ans search for company/job'do
+  scenario 'and search for company/job'do
     pepsico = Company.create!(name: 'Pepsi', description: 'Empresa de bebidas')
     dolly = Company.create!(name: 'Dolly', description: 'Empresa de refris')
     Job.create!(title: 'engenharia de alimentos', company: pepsico) 

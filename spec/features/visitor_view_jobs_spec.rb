@@ -18,7 +18,7 @@ feature 'Visitor view jobs' do
     click_on 'Empresas'
     click_on 'Pepsi'
 
-    expect(page).to have_content('Senior developer')
+    expect(page).to have_link('Senior developer')
     expect(page).to have_content('R$ 10.000')
     expect(page).to have_content('Senior')
   end
@@ -54,7 +54,7 @@ feature 'Visitor view jobs' do
 
   scenario 'if total jobs differs from 0' do
     pepsico = Company.new(name:'Pepsi')
-    candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456')
+    candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456', full_name: 'Cris Saito')
     job = Job.create!(title: 'Analista', total_jobs:'1', company: pepsico)
     application = JobApplication.create(candidate: candidate, job: job)
 
@@ -70,7 +70,7 @@ feature 'Visitor view jobs' do
 
   scenario 'if not expired date' do
     pepsico = Company.new(name:'Pepsi')
-    candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456')
+    candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456', full_name: 'Cris Saito')
     job = Job.create!(title: 'Analista', total_jobs:'1', expiration_date: '21/02/2021', company: pepsico)
     job2 = Job.create!(title: 'Diretoria', total_jobs:'1', expiration_date: '21/03/2022', company: pepsico)
 

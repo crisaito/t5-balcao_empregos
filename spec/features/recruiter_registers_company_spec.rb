@@ -5,7 +5,7 @@ feature 'Recruiter registers company' do
   scenario 'successfully' do
 
     visit root_path
-    click_on 'Recrutador'
+    click_on("Recrutador", :match => :first)
     click_on 'Sign up'
 
     within('form') do

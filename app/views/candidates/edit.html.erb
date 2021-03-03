@@ -1,5 +1,9 @@
 <h1>Editar perfil</h1>
 
+<% @candidate.errors.full_messages.each do |message| %>
+
+  <p class="alert alert-warning" role="alert"><%= message %></p>
+<%end%>
 <h3> <%= @candidate.full_name %></h3>
 
 <%= form_for @candidate do |f| %>
