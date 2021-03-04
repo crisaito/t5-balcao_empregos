@@ -35,10 +35,11 @@ Se desejar, a aplicação já possui dados para testes no banco, apenas execute 
 rails db:seed
 ```
 Com esse banco é possível fazer login com os seguintes usuários:
-   | email | password
---- | --- | ---
-Recrutador | ana@coca.com.br | 123456
-Candidato | cristiane@gmail.com.br | 123456
+
+|   | email | password |
+| --- | --- | --- |
+| Recrutador | ana@coca.com.br | 123456 |
+| Candidato | cristiane@gmail.com.br | 123456 |
 
 Para visualizar os testes execute:
 ```bash
