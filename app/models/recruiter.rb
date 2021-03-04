@@ -24,4 +24,5 @@ class Recruiter < ApplicationRecord
       self.admin!
     end
   end
+
 end

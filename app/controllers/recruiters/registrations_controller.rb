@@ -1,6 +1,6 @@
-class Recruiter::RegistrationsController < Devise::RegistrationsController
-  protected
+# frozen_string_literal: true
 
+class Recruiters::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     array = Recruiter.pluck(:company_name)
     array.pop

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "home#index"
   get 'search', to:"home#search"
   
-  devise_for :recruiters, controllers: { registrations: "recruiter/registrations" }
+  devise_for :recruiters, controllers: { registrations: "recruiters/registrations" }
   devise_for :candidates, controllers: { registrations: "candidate/registrations" }
 
   resources :companies, only: [:index, :show, :new, :create, :edit, :update] do

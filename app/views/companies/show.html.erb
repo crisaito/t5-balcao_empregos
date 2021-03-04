@@ -1,23 +1,26 @@
 <h1><%= @company.name %></h1>
 
- <% if @company.logo.attached? %>
-    <%= image_tag @company.logo %> 
-  <% end %>
+<% if recruiter_signed_in? && current_recruiter.admin? %>
+  <p> <%= link_to 'Editar empresa', edit_company_path(@company) %> </p>
+<% end %>
 
-  <p> Descrição </p>
-  <p> <%= @company.description %> </p>
-  <p> Endereço </p>
-  <p> <%= @company.address %> </p>
-  <p> CNPJ </p>
-  <p> <%= @company.cnpj %> </p>
-  <p> site </p>
-  <p> <%= @company.website %> </p>
-  <p> linkedin </p>
-  <p> <%= @company.linkedin %> </p>
+<% if @company.logo.attached? %>
+  <%= image_tag @company.logo %> 
+<% end %>
+<p> Descrição </p>
+<p> <%= @company.description %> </p>
+<p> Endereço </p>
+<p> <%= @company.address %> </p>
+<p> CNPJ </p>
+<p> <%= @company.cnpj %> </p>
+<p> site </p>
+<p> <%= @company.website %> </p>
+<p> linkedin </p>
+<p> <%= @company.linkedin %> </p>
 
 <% if recruiter_signed_in? %>
   <p> <%= link_to 'Cadastrar vaga', new_company_job_path(@company) %> </p>
-  <% end %>
+<% end %>
   
 <p>Vagas Disponíveis</p>
 
@@ -35,4 +38,4 @@
   <% end %>
 </div>
 
-<%= link_to 'Voltar', companies_path %> 
+<%= link_to 'Voltar', companies_path %>

@@ -1,9 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_recruiter!, except: [:index, :show]
+  before_action :only_recruiter_company, except: [:index, :show]
 
   def index
     @companies = Company.all
   end
+
   def show
     @company = Company.find(params[:id])
   end
@@ -36,6 +38,8 @@ class CompaniesController < ApplicationController
     end
   end
 
+  private
+
   def company_params
     params.require(:company).permit(
       :name,
@@ -45,5 +49,13 @@ class CompaniesController < ApplicationController
       :website,
       :linkedin,
       :logo)
+  end
+
+  def only_recruiter_company
+    company = Company.find(params[:id])
+
+    unless current_recruiter.company_id == company.id
+    redirect_to company_path(current_recruiter.company_id)
+    end
   end
 end

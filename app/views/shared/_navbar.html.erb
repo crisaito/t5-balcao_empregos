@@ -10,6 +10,7 @@
           <% if recruiter_signed_in? %>
             <p> <%= current_recruiter.email %> </p>
             <p> Empresa:  <%= current_recruiter.company_name %></p>
+            <p> <%= link_to 'Painel', company_path(current_recruiter.company_id) %> </p>
             <p> <%= link_to 'Sair', destroy_recruiter_session_path, method: :delete %> </p>
           <% elsif candidate_signed_in? %>
             <p> <%= current_candidate.email %> </p>

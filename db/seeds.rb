@@ -3,7 +3,7 @@ coca = Company.create(name: "Coca", description: "Um dos sabores mais reconhecid
                       address: "Itupeva", cnpj: "45000000000", website: "www.coca.com.br", 
                       linkedin: "www.linkedin.com/company/coca")
 coca.logo.attach(io: File.open(Rails.root.join('public', 'images', 'coca.jpg')), filename: 'coca.jpg')
-Recruiter.create(email: "ana@coca.com.br", password: "123456", company: coca)
+Recruiter.create(email: "ana@coca.com.br", password: "123456", role: 0, company: coca)
 Job.create(title: 'Senior developer', description: 'Principais Atividades: 
             Desenvolver serviços web funcionais utilizando HTML5, 
             FluentUI, Node.js, Ruby on Rails, React', 
@@ -26,7 +26,7 @@ pepsico = Company.create(name: 'Pepsi', description: 'O produto que deu origem �
                           website: 'www.pepsico.com.br', 
                           linkedin: 'www.linkedin.com/company/pepsico')
 pepsico.logo.attach(io: File.open(Rails.root.join('public', 'images', 'pepsi.jpg')), filename: 'pepsi.jpg')
-Recruiter.create(email: "bia@pepsi.com.br", password: "123456", company: pepsico)
+Recruiter.create(email: "bia@pepsi.com.br", password: "123456", role: 0, company: pepsico)
 Job.create(title: 'Analista de desenvolvimento', description: 'Desenvolverá funcionalidades 
             e soluções para os mais diversos sistemas dentro da empresa.',
             compensation: '8525', experience_level: 'Pleno', 
@@ -41,7 +41,7 @@ guarana = Company.create(name: 'Guarana', description: 'Guaraná é um refrigera
                           website: 'www.guarana.com.br', 
                           linkedin: 'www.linkedin.com/company/guarana')
 guarana.logo.attach(io: File.open(Rails.root.join('public', 'images', 'guarana.jpg')), filename: 'guarana.jpg')
-Recruiter.create(email: "bia@guarana.com.br", password: "123456", company: guarana)
+Recruiter.create(email: "bia@guarana.com.br", password: "123456", role: 0, company: guarana)
 Job.create(title: 'Analista de Desenvolvimento de Software', description: 'Implementar soluções que 
             atendam os requisitos de negócio priorizando qualidade e prazos.', compensation: '15000', 
             experience_level: 'Pleno', requirements: 'Kubernetes, TDD/BDD, Ruby on Rails', 
