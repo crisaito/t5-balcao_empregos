@@ -43,7 +43,7 @@ Com esse banco é possível fazer login com os seguintes usuários:
 
 Para visualizar os testes execute:
 ```bash
-rails rspec -fd
+rspec -fd
 ```
 
 Para visualizar a aplicação no navegador execute:
