@@ -18,7 +18,7 @@
 <p> linkedin </p>
 <p> <%= @company.linkedin %> </p>
 
-<% if recruiter_signed_in? %>
+<% if recruiter_signed_in? && current_recruiter.company_id == @company.id%>
   <p> <%= link_to 'Cadastrar vaga', new_company_job_path(@company) %> </p>
 <% end %>
   

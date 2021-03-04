@@ -1,19 +1,13 @@
 require 'rails_helper'
 
-feature 'Recruiter registers job' do
+feature 'Recruiter registers job from company' do
 
-  scenario 'sucessfully' do
+  scenario 'successfully' do
     recruiter = Recruiter.create!(email: 'saito@pepsi.com', password: '123456')
-
-    visit root_path
-    click_on("Recrutador", :match => :first)
-
-    within('form') do
-      fill_in 'E-mail', with: 'saito@pepsi.com' 
-      fill_in 'Senha', with: '123456'
-      click_on 'Log in'
-    end  
+    login_as recruiter, scope: :recruiter
     
+    visit root_path
+    click_on 'Painel'
     click_on 'Cadastrar vaga'
     
     fill_in 'Título da vaga', with: 'Senior developer'
@@ -34,6 +28,39 @@ feature 'Recruiter registers job' do
     expect(page).to have_content('21/02/2021')
     expect(page).to have_content('5')
     expect(page).to have_link('Voltar')
+  end
+
+  scenario 'and edits' do
+    dolly = Company.create!(name:'Dolly')
+    recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
+    Job.create!(title: 'Analista', total_jobs: 1, expiration_date: '30/10/2021', company: dolly)
+    login_as recruiter, scope: :recruiter
+
+    visit root_path
+    click_on 'Painel'
+    click_on 'Analista'
+    click_on 'Editar vaga'
+
+    fill_in 'Título da vaga', with: 'Senior developer'
+    click_on 'Editar Vaga'
+
+    expect(page).to have_content('Senior developer')
+  end
+
+  scenario 'cannot view another company edit' do
+    dolly = Company.create!(name:'Dolly')
+    coca = Company.create!(name:'Coca')
+    recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
+    Recruiter.create!(email: 'saito@coca.com', password: '123456')
+    Job.create!(title: 'Analista', total_jobs: 1, expiration_date: '30/10/2021', company: dolly)
+    Job.create!(title: 'Dentista', total_jobs: 1, expiration_date: '30/10/2021', company: coca)
+    login_as recruiter, scope: :recruiter
+
+    visit root_path
+    click_on 'Empresas'
+    click_on 'Coca'
+
+    expect(page).not_to have_link('Cadastrar vaga') 
   end
 end
 
