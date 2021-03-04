@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :authenticate_candidate!, except: [:show]
+  before_action :authenticate_candidate!, only: [:show, :edit, :update]
   
   def show
     @candidate = Candidate.find(params[:id])

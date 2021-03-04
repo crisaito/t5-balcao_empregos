@@ -40,9 +40,14 @@ class JobsController < ApplicationController
 
   def apply
     job = Job.find(params[:id])
-    JobApplication.create!(candidate: current_candidate, job: job)
-    flash[:apply] = 'Você candidatou-se para a vaga com sucesso!'
-    redirect_to current_candidate
+    if JobApplication.find_by(candidate: current_candidate, job: job).nil?
+      JobApplication.create!(candidate: current_candidate, job: job)
+      flash[:apply_positive] = 'Você candidatou-se para a vaga com sucesso!'
+      redirect_to current_candidate
+    else
+      flash[:apply_negative] = 'Você já candidatou-se para a vaga anteriormente!'
+      redirect_to current_candidate
+    end
   end
 
   private

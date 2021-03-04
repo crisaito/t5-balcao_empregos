@@ -1,13 +1,18 @@
+<% if flash[:apply_positive].present? %>
+  <p class="alert alert-success" role="alert"><%= flash[:apply_positive] %> </p>
+<% end %>
+<% if flash[:apply_negative].present? %>
+  <p class="alert alert-warning" role="alert"><%= flash[:apply_negative] %> </p>
+<% end %>
+
 <h1>Painel do Candidato</h1>
 
-<%= flash[:apply] %> 
-
-  <p> Email  <%= @candidate.email %> </p>
-  <p> Nome Completo  <%= @candidate.full_name %> </p>
-  <p> Tel  <%= @candidate.tel %> </p>
-  <p> Cidade  <%= @candidate.city  %> </p>
-  <p> Estado  <%= @candidate.state %> </p>
-  <p> Bio  <%= @candidate.bio %> </p>
+<p> Email  <%= @candidate.email %> </p>
+<p> Nome Completo  <%= @candidate.full_name %> </p>
+<p> Tel  <%= @candidate.tel %> </p>
+<p> Cidade  <%= @candidate.city  %> </p>
+<p> Estado  <%= @candidate.state %> </p>
+<p> Bio  <%= @candidate.bio %> </p>
 
 
 <p> <%= link_to 'Editar perfil', edit_candidate_path(@candidate) %> </p> 
