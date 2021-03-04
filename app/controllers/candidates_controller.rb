@@ -1,4 +1,5 @@
 class CandidatesController < ApplicationController
+  before_action :authenticate_candidate!, except: [:show]
   
   def show
     @candidate = Candidate.find(params[:id])
