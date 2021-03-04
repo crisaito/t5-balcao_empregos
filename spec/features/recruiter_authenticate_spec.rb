@@ -38,6 +38,20 @@ feature 'Recruiter' do
     expect(page).to have_link 'Voltar'
   end
 
+  scenario 'sign up and fields cannot be blank' do
+
+    visit root_path
+    click_on("Recrutador", :match => :first)
+    click_on 'Sign up'
+    
+    within('form') do
+      click_on 'Sign up'
+    end  
+    
+    expect(page).to have_content 'E-mail não pode ficar em branco'
+    expect(page).to have_content 'Senha não pode ficar em branco'
+  end
+
   scenario 'log in successfully as recruiter' do
     Recruiter.create!(email: 'saito@cocacola.com', password: '123456')
 

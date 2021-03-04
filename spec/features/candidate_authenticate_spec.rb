@@ -23,6 +23,21 @@ feature 'Candidate' do
     expect(page).to have_content 'Painel do Candidato'
   end
   
+  scenario 'sign up and fields cannot be blank' do
+
+    visit root_path
+    click_on("Candidato", :match => :first)
+    click_on 'Sign up'
+    
+    within('form') do
+      click_on 'Sign up'
+    end  
+    
+    expect(page).to have_content 'E-mail não pode ficar em branco'
+    expect(page).to have_content 'Senha não pode ficar em branco'
+    expect(page).to have_content 'Nome completo não pode ficar em branco'
+  end
+
   scenario 'log in successfully' do
     Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
     
@@ -39,7 +54,7 @@ feature 'Candidate' do
     expect(page).to have_content 'Login efetuado com sucesso.'
     expect(page).to have_content 'Painel do Candidato'
   end
-
+  
   scenario 'log out' do
     Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
 
