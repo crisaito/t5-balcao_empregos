@@ -47,7 +47,7 @@ feature 'Recruiter registers job from company' do
     expect(page).to have_content('Senior developer')
   end
 
-  scenario 'cannot view another job register link' do
+  scenario 'cannot view another job edit link' do
     dolly = Company.create!(name:'Dolly')
     coca = Company.create!(name:'Coca')
     recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
