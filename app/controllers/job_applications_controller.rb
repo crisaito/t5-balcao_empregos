@@ -1,4 +1,7 @@
 class JobApplicationsController < ApplicationController
+  before_action :authenticate_candidate!
+  before_action :authenticate_recruiter!
+
 
   def show
     @job_application = JobApplication.find(params[:id])
