@@ -38,8 +38,9 @@ class JobApplicationsController < ApplicationController
 
   def candidate_accepted
     @job_application = JobApplication.find(params[:id])
+    job = Job.find(params[:id])
     @job_application.candidate_accepted!
-    @job_application.decrease_total_jobs
+    job.increase_total_application
   end
 
   def candidate_declined

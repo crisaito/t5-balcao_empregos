@@ -25,7 +25,7 @@ feature 'Candidate apply for job' do
     expect(JobApplication.all.size).to eq 1
     expect(page).to have_content('Você candidatou-se para a vaga com sucesso!')
     expect(page).to have_content('Senior developer')
-    expect(page).to have_content('Status: pending')
+    expect(page).to have_content('Status: pendente de avaliação')
   end
 
   scenario 'only once' do

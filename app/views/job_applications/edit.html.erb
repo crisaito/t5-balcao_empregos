@@ -2,8 +2,10 @@
 
 <% if recruiter_signed_in? %>
   <p> <%= @job_application.job.title %> </p>
-  <p> <%= @job_application.job.expiration_date %> </p>
-  <p> <%= @job_application.job.total_jobs %> </p>
+  <p> Data expiração: <%= I18n.localize(@job_application.job.expiration_date) %> </p>
+  <p> Vagas Total: <%= @job_application.job.total_jobs %> </p>
+  <p> Vagas Preenchidas: <%= @job_application.job.total_application %> </p>
+  <p> <%= number_to_currency(@job_application.job.compensation, delimiter: ".") %> </p>
   <br>
   <p> <%= @job_application.candidate.full_name %> </p>
   <p> <%= @job_application.candidate.bio %> </p>

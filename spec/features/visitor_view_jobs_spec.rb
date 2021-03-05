@@ -52,19 +52,19 @@ feature 'Visitor view jobs' do
     expect(page).to have_content('5')
   end
 
-  scenario 'if total jobs differs from 0' do
+  scenario 'if total applications less total jobs' do
     pepsico = Company.new(name:'Pepsi')
     candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Analista', total_jobs:'1', company: pepsico)
+    job = Job.create!(title: 'Analista', total_jobs:'1', total_application: 0, expiration_date: "30/05/2022", company: pepsico)
     application = JobApplication.create(candidate: candidate, job: job)
 
-    application.decrease_total_jobs
+    job.increase_total_application
     
     visit root_path
     click_on 'Empresas'
     click_on 'Pepsi'
 
-    expect(application.job.total_jobs).to eq 0
+    expect(job.total_application).to eq 1
     expect(page).not_to have_content('Analista')
   end
 

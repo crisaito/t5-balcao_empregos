@@ -25,17 +25,17 @@
 <p>Vagas Disponíveis</p>
 
 <div>
-  <% @company.jobs.each do |job| %>
 
-    <% if job.total_jobs > 0 && Date.today < job.expiration_date %>
+  <% @company.jobs.each do |job| %>
+    <% if job.total_jobs > job.total_application && Date.today < job.expiration_date %>
       <h3> <%= link_to job.title, company_job_path(@company, job) %> </h3>
       <p> <%= I18n.localize(job.expiration_date) %> </p>
       <p> <%= (job.expiration_date - Date.today).to_i %>  dias para expirar a vaga</p>
       <p> <%= job.experience_level %> </p>
       <p> <%= number_to_currency(job.compensation, delimiter: ".") %> </p>
     <% end %>
-    
   <% end %>
+
 </div>
 
 <%= link_to 'Voltar', companies_path %>

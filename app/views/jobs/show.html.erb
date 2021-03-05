@@ -24,7 +24,7 @@
 
     <div style="border: 1px solid lime; width: 50%" >
       <p> <%=  job_application.candidate.full_name  %> </p>
-      <p>Status: <%= job_application.status %> </p>
+      <p>Status: <%= JobApplication.human_attribute_name("status.#{job_application.status}") %> </p>
       
       <% if job_application.candidate_declined? %>
         <%= job_application.msg_declined %>

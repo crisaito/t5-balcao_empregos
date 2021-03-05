@@ -14,7 +14,7 @@ feature 'Recruiter view job application' do
     click_on 'Senior developer'
 
     expect(page).to have_content('Cris Saito')
-    expect(page).to have_content('Status: pending')
+    expect(page).to have_content('Status: pendente de avaliação')
     expect(page).to have_link('Detalhes')
   end
 
