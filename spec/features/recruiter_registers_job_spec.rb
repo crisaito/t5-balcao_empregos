@@ -47,13 +47,27 @@ feature 'Recruiter registers job from company' do
     expect(page).to have_content('Senior developer')
   end
 
-  scenario 'cannot view another company edit' do
+  scenario 'cannot view another job register link' do
     dolly = Company.create!(name:'Dolly')
     coca = Company.create!(name:'Coca')
     recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
     Recruiter.create!(email: 'saito@coca.com', password: '123456')
-    Job.create!(title: 'Analista', total_jobs: 1, expiration_date: '30/10/2021', company: dolly)
     Job.create!(title: 'Dentista', total_jobs: 1, expiration_date: '30/10/2021', company: coca)
+    login_as recruiter, scope: :recruiter
+
+    visit root_path
+    click_on 'Empresas'
+    click_on 'Coca'
+    click_on 'Dentista'
+
+    expect(page).not_to have_link('Editar vaga') 
+  end
+
+  scenario 'cannot view another job register link' do
+    dolly = Company.create!(name:'Dolly')
+    coca = Company.create!(name:'Coca')
+    recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
+    Recruiter.create!(email: 'saito@coca.com', password: '123456')
     login_as recruiter, scope: :recruiter
 
     visit root_path
