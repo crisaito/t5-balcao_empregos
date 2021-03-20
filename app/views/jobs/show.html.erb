@@ -26,10 +26,6 @@
       <p> <%=  job_application.candidate.full_name  %> </p>
       <p>Status: <%= JobApplication.human_attribute_name("status.#{job_application.status}") %> </p>
       
-      <% if job_application.candidate_declined? %>
-        <%= job_application.msg_declined %>
-      <% end %>
-      
       <p> <%= link_to 'Detalhes', job_application_path(job_application)%> </p>
     </div>
 

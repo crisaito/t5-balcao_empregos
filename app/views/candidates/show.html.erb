@@ -25,7 +25,7 @@
       <p> <%=  job_application.job.company.name  %> </p>
       <p> <%=  job_application.job.title  %> </p>
       <p>Status: <%= JobApplication.human_attribute_name("status.#{job_application.status}") %> </p>
-      <p> <%= link_to 'Detalhes', edit_job_application_path(job_application)%> </p>
+      <p> <%= link_to 'Detalhes', job_application_path(job_application)%> </p>
     </div>
 
   <% end %>

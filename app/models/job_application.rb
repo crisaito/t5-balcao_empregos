@@ -14,6 +14,14 @@ class JobApplication < ApplicationRecord
   def recruiter_feedback_approved
     self.recruiter_approved!
   end
+ 
+  def candidate_feedback_declined
+    self.candidate_declined!
+  end
+
+  def candidate_feedback_accepted
+    self.candidate_accepted!
+  end
 
   def create_recruiter_feedback
     RecruiterFeedback.create!(id: self.id ,job_application: self)

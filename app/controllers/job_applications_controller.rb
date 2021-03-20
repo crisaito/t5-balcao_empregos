@@ -5,6 +5,7 @@ class JobApplicationsController < ApplicationController
   def show
     @job_application = JobApplication.find(params[:id])
     @recruiter_feedback = RecruiterFeedback.find(params[:id])
+    @candidate_feedback = CandidateFeedback.find(params[:id])
   end
 
   def edit

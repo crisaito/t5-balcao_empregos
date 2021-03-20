@@ -1,0 +1,8 @@
+<h1>Declinar proposta</h1>
+
+<%= form_with model: @candidate_feedback, url: job_application_candidate_feedback_path(@candidate_feedback), method: 'patch' do |f| %>
+  <%= f.label :declined_msg, 'Motivo' %>
+  <%= f.text_area :declined_msg %>
+
+  <%= f.submit 'Enviar motivo' %>
+<% end %>
