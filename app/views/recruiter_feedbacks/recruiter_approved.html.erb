@@ -1,0 +1,14 @@
+<h1>Aprovar candidatura</h1>
+
+<%= form_with model: @recruiter_feedback, url: job_application_recruiter_feedback_path(@recruiter_feedback), method: 'patch' do |f| %>
+  <%= f.label :approved_msg, 'Boas Vindas' %>
+  <%= f.text_area :approved_msg %>
+
+  <%= f.label :proposed_compensation, 'Proposta Salarial' %>
+  <%= f.text_area :proposed_compensation %>
+
+  <%= f.label :date_start, 'Data de início' %>
+  <%= f.date_field :date_start %>
+
+  <%= f.submit 'Enviar proposta' %>
+<% end %>

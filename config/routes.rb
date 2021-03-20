@@ -13,9 +13,11 @@ Rails.application.routes.draw do
 
   resources :candidates, only: [:show, :edit, :update]
   resources :job_applications, only: [:show, :edit, :update] do
-    patch 'recruiter_rejected', on: :member
-    patch 'recruiter_approved', on: :member
-    patch 'candidate_accepted', on: :member
-    patch 'candidate_declined', on: :member
+    resources :recruiter_feedbacks, only: [:show, :edit, :update] do
+      patch 'recruiter_rejected', on: :member
+      patch 'recruiter_approved', on: :member
+    end
+    # patch 'candidate_accepted', on: :member
+    # patch 'candidate_declined', on: :member
   end
 end

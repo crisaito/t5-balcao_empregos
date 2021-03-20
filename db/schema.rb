@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_042337) do
+ActiveRecord::Schema.define(version: 2021_03_19_185344) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,11 +76,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_042337) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0, null: false
-    t.text "msg_approved"
-    t.text "msg_rejected"
-    t.decimal "proposed_compensation"
-    t.date "date_start"
-    t.text "msg_declined"
     t.index ["candidate_id"], name: "index_job_applications_on_candidate_id"
     t.index ["job_id"], name: "index_job_applications_on_job_id"
   end
@@ -99,6 +94,28 @@ ActiveRecord::Schema.define(version: 2021_03_05_042337) do
     t.integer "total_application", default: 0
     t.integer "status", default: 0
     t.index ["company_id"], name: "index_jobs_on_company_id"
+  end
+
+  create_table "recruiter_feedbacks", force: :cascade do |t|
+    t.text "rejected_msg"
+    t.text "approved_msg"
+    t.decimal "proposed_compensation"
+    t.date "date_start"
+    t.integer "job_application_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_application_id"], name: "index_recruiter_feedbacks_on_job_application_id"
+  end
+
+  create_table "recruiter_replies", force: :cascade do |t|
+    t.text "decline_text"
+    t.text "accept_text"
+    t.decimal "compensation"
+    t.date "date_start"
+    t.integer "job_application_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_application_id"], name: "index_recruiter_replies_on_job_application_id"
   end
 
   create_table "recruiters", force: :cascade do |t|
@@ -122,4 +139,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_042337) do
   add_foreign_key "job_applications", "candidates"
   add_foreign_key "job_applications", "jobs"
   add_foreign_key "jobs", "companies"
+  add_foreign_key "recruiter_feedbacks", "job_applications"
+  add_foreign_key "recruiter_replies", "job_applications"
 end

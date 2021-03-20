@@ -1,0 +1,32 @@
+<h1>Detalhes da candidatura</h1>
+  
+<% if recruiter_signed_in? %>
+  <p> <%= @job_application.job.title %> </p>
+  <p> Data expiração: <%= I18n.localize(@job_application.job.expiration_date) %> </p>
+  <p> Total de Vagas: <%= @job_application.job.total_jobs %> </p>
+  <p> Vagas preenchidas: <%= @job_application.job.total_application %> </p>
+  <p> <%= number_to_currency(@job_application.job.compensation,delimiter: '.') %> </p>
+  <br>
+
+  <p> <%= @job_application.candidate.full_name %> </p>
+  <p> <%= @job_application.candidate.bio %> </p>
+  <p> <%= @job_application.candidate.tel %> </p>
+  <p> <%= @job_application.candidate.email %> </p>
+  
+  <% if @job_application.recruiter_rejected? %>
+    <p> <%= JobApplication.human_attribute_name("status.#{@job_application.status}") %> </p>
+    <p> <%= @recruiter_feedback.rejected_msg %> </p>
+  <% end %>
+
+  <% if @job_application.recruiter_approved? %>
+    <p> <%= JobApplication.human_attribute_name("status.#{@job_application.status}") %> </p>
+    <p> <%= @recruiter_feedback.approved_msg %> </p>
+    <p> <%= number_to_currency(@recruiter_feedback.proposed_compensation, delimiter: ".") %> </p>
+    <p> <%= I18n.localize(@recruiter_feedback.date_start) %> </p>  
+  <% end %>
+
+  <% if @job_application.pending? %>
+    <p> <%= link_to 'Rejeitar candidatura', recruiter_rejected_job_application_recruiter_feedback_path(@job_application), method: :patch %> </p>
+    <p> <%= link_to 'Aceitar candidatura', recruiter_approved_job_application_recruiter_feedback_path(@job_application), method: :patch %> </p>
+  <% end %>
+<% end %>

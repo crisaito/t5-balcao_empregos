@@ -28,10 +28,9 @@
       
       <% if job_application.candidate_declined? %>
         <%= job_application.msg_declined %>
-        
       <% end %>
       
-      <p> <%= link_to 'Detalhes', edit_job_application_path(job_application)%> </p>
+      <p> <%= link_to 'Detalhes', job_application_path(job_application)%> </p>
     </div>
 
   <% end %>

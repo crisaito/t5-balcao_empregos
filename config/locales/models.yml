@@ -37,9 +37,9 @@ pt-BR:
         state: "Estado"
         bio: "Bio"
       job_application/status:
-        pending: "pendente de avaliação" 
-        recruiter_rejected: "candidatura desconsiderada"
-        recruiter_approved: "candidatura aprovada"
-        candidate_accepted: "proposta aceita"
-        candidate_declined: "proposta recusada"
+        pending: pendente de avaliação 
+        recruiter_rejected: candidatura desconsiderada
+        recruiter_approved: candidatura aprovada
+        candidate_accepted: proposta aceita
+        candidate_declined: proposta recusada
 

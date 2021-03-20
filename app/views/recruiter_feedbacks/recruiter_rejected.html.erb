@@ -1,0 +1,8 @@
+<h1>Rejeitar candidatura</h1>
+
+<%= form_with model: @recruiter_feedback, url: job_application_recruiter_feedback_path(@recruiter_feedback), method: 'patch' do |f| %>
+  <%= f.label :rejected_msg, 'Motivo' %>
+  <%= f.text_area :rejected_msg %>
+
+  <%= f.submit 'Enviar motivo' %>
+<% end %>
