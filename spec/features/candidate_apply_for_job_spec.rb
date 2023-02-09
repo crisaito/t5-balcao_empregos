@@ -12,7 +12,7 @@ feature 'Candidate apply for job' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2022',
+                expiration_date: Date.today + 1,
                 total_jobs:'5', company: pepsico) 
     login_as candidate, scope: :candidate
 
@@ -39,7 +39,7 @@ feature 'Candidate apply for job' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2022',
+                expiration_date: Date.today + 1,
                 total_jobs:'5', company: pepsico) 
     JobApplication.create!(candidate: candidate, job: job)
     login_as candidate, scope: :candidate

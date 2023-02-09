@@ -33,7 +33,7 @@ feature 'Recruiter registers job from company' do
   scenario 'and edits' do
     dolly = Company.create!(name:'Dolly')
     recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
-    Job.create!(title: 'Analista', total_jobs: 1, expiration_date: '30/10/2021', company: dolly)
+    Job.create!(title: 'Analista', total_jobs: 1, expiration_date: Date.today + 1, company: dolly)
     login_as recruiter, scope: :recruiter
 
     visit root_path
@@ -52,7 +52,7 @@ feature 'Recruiter registers job from company' do
     coca = Company.create!(name:'Coca')
     recruiter = Recruiter.create!(email: 'saito@dolly.com', password: '123456')
     Recruiter.create!(email: 'saito@coca.com', password: '123456')
-    Job.create!(title: 'Dentista', total_jobs: 1, expiration_date: '30/10/2021', company: coca)
+    Job.create!(title: 'Dentista', total_jobs: 1, expiration_date: Date.today + 1, company: coca)
     login_as recruiter, scope: :recruiter
 
     visit root_path

@@ -5,7 +5,7 @@ feature 'Recruiter view job application' do
     pepsico = Company.create!(name: 'Pepsi')
     recruiter = Recruiter.create!(email: 'ana@pepsi.com', password: '123456')
     candidate = Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: "10/10/2021", company: pepsico)
+    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: Date.today + 1, company: pepsico)
     JobApplication.create!(candidate: candidate, job: job)
     login_as recruiter, scope: :recruiter
 
@@ -22,7 +22,7 @@ feature 'Recruiter view job application' do
     pepsico = Company.create!(name: 'Pepsi')
     recruiter = Recruiter.create!(email: 'ana@pepsi.com', password: '123456')
     candidate = Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: "10/10/2021", company: pepsico)
+    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: Date.today + 1, company: pepsico)
     JobApplication.create!(candidate: candidate, job: job)
     login_as recruiter, scope: :recruiter
 
@@ -39,7 +39,7 @@ feature 'Recruiter view job application' do
     pepsico = Company.create!(name: 'Pepsi')
     recruiter = Recruiter.create!(email: 'ana@pepsi.com', password: '123456')
     candidate = Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: "10/10/2021", company: pepsico)
+    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: Date.today + 1, company: pepsico)
     job_application = JobApplication.create!(candidate: candidate, job: job)
     login_as recruiter, scope: :recruiter
 
@@ -61,7 +61,7 @@ feature 'Recruiter view job application' do
     pepsico = Company.create!(name: 'Pepsi')
     recruiter = Recruiter.create!(email: 'ana@pepsi.com', password: '123456')
     candidate = Candidate.create!(email: 'cris@gmail.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: "10/10/2021", company: pepsico)
+    job = Job.create!(title: 'Senior developer', total_jobs: 1, expiration_date: Date.today + 1, company: pepsico)
     job_application = JobApplication.create!(candidate: candidate, job: job)
     login_as recruiter, scope: :recruiter
     

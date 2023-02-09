@@ -11,7 +11,7 @@ feature 'Visitor view jobs' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2022',
+                expiration_date: Date.today + 1,
                 total_jobs:'5', company: pepsico)
     
     visit root_path
@@ -33,7 +33,7 @@ feature 'Visitor view jobs' do
                 FluentUI, Node.js, Ruby on Rails, React', 
                 compensation: '10000', experience_level: 'Senior', 
                 requirements: 'Foco em performance, Ruby on Rails', 
-                expiration_date: '21/02/2022',
+                expiration_date: Date.today + 1,
                 total_jobs:'5', company: pepsico)
 
     visit root_path
@@ -48,14 +48,14 @@ feature 'Visitor view jobs' do
     expect(page).to have_content('R$ 10.000')
     expect(page).to have_content('Senior')
     expect(page).to have_content('Foco em performance, Ruby on Rails')
-    expect(page).to have_content('21/02/2022')
+    expect(page).to have_content(Date.parse((Date.today + 1).to_s).strftime('%d/%m/%Y'))
     expect(page).to have_content('5')
   end
 
   scenario 'if total applications less total jobs' do
     pepsico = Company.new(name:'Pepsi')
     candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Analista', total_jobs:'1', total_application: 0, expiration_date: "30/05/2022", company: pepsico)
+    job = Job.create!(title: 'Analista', total_jobs:'1', total_application: 0, expiration_date: Date.today + 1, company: pepsico)
     application = JobApplication.create(candidate: candidate, job: job)
 
     job.increase_total_application
@@ -71,8 +71,8 @@ feature 'Visitor view jobs' do
   scenario 'if not expired date' do
     pepsico = Company.new(name:'Pepsi')
     candidate = Candidate.new(email: 'saito@pepsi.com', password: '123456', full_name: 'Cris Saito')
-    job = Job.create!(title: 'Analista', total_jobs:'1', expiration_date: '21/02/2021', company: pepsico)
-    job2 = Job.create!(title: 'Diretoria', total_jobs:'1', expiration_date: '21/03/2022', company: pepsico)
+    job = Job.create!(title: 'Analista', total_jobs:'1', expiration_date: Date.today - 1, company: pepsico)
+    job2 = Job.create!(title: 'Diretoria', total_jobs:'1', expiration_date: Date.today + 1, company: pepsico)
 
     visit root_path
     click_on 'Empresas'
