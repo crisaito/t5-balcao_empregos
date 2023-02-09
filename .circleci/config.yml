@@ -1,0 +1,21 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7.0
+    steps:
+      - checkout
+      - node/install:
+          install-yarn: true
+          node-version: '16.13'
+      - run: node --version
+      - run:
+          name: Run tests
+          command: |
+            yarn install
+            bundle install
+            bundle exec rspec

@@ -115,17 +115,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_200406) do
     t.index ["job_application_id"], name: "index_recruiter_feedbacks_on_job_application_id"
   end
 
-  create_table "recruiter_replies", force: :cascade do |t|
-    t.text "decline_text"
-    t.text "accept_text"
-    t.decimal "compensation"
-    t.date "date_start"
-    t.integer "job_application_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_application_id"], name: "index_recruiter_replies_on_job_application_id"
-  end
-
   create_table "recruiters", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -149,5 +138,4 @@ ActiveRecord::Schema.define(version: 2021_03_20_200406) do
   add_foreign_key "job_applications", "jobs"
   add_foreign_key "jobs", "companies"
   add_foreign_key "recruiter_feedbacks", "job_applications"
-  add_foreign_key "recruiter_replies", "job_applications"
 end
